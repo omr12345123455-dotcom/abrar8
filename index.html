@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لـِ أَبْرَارْ 💖 | Abrar's Royal Rose</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #1a0008 0%, #050002 70%, #000000 100%);
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Amiri', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #fff;
+    }
+
+    /* العنوان السينمائي العلوي */
+    .title-container {
+      position: absolute;
+      top: 25px;
+      text-align: center;
+      z-index: 10;
+      animation: fadeInDown 2s ease-out;
+    }
+
+    .main-title {
+      font-family: 'Reem Kufi', sans-serif;
+      font-size: 26px;
+      background: linear-gradient(45deg, #ff99ac, #ff3366, #ffb3c1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(255, 51, 102, 0.6);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #ffccd5;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    /* حاوية الوردة الفخمة */
+    .scene-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 10px 30px rgba(255, 0, 85, 0.5));
+    }
+
+    /* أنيميشن الساق والوردة */
+    .stem {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: growStem 2.5s ease-in-out forwards;
+    }
+
+    .rose-head {
+      transform-origin: 250px 180px;
+      animation: bloom 3s 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+    }
+
+    @keyframes growStem {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes bloom {
+      0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    /* كارت الرسالة المخفي الزجاجي (Glassmorphism) */
+    .glass-card {
+      position: absolute;
+      bottom: 80px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 179, 193, 0.2);
+      border-radius: 20px;
+      padding: 20px 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 51, 102, 0.15);
+      z-index: 20;
+      max-width: 85%;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-card.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card-name {
+      font-family: 'Reem Kufi', sans-serif;
+      font-size: 32px;
+      color: #ff4d6d;
+      text-shadow: 0 0 15px #ff0055;
+      margin-bottom: 5px;
+    }
+
+    .card-text {
+      font-size: 18px;
+      color: #ffe6ea;
+      line-height: 1.6;
+    }
+
+    /* زر الحركة الكبيرة */
+    .action-btn {
+      position: absolute;
+      bottom: 25px;
+      background: linear-gradient(45deg, #ff0055, #ff5079);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      color: white;
+      font-family: 'Reem Kufi', sans-serif;
+      font-size: 16px;
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+      cursor: pointer;
+      z-index: 30;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .action-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(255, 0, 85, 0.9);
+    }
+
+    /* تساقط بتلات الورد بالخلفية */
+    .petal-fall {
+      position: absolute;
+      background: radial-gradient(circle, #ff1a53 0%, #800022 100%);
+      border-radius: 100% 0 100% 0;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.9; }
+      100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title-container">
+    <div class="main-title">الجميع يشتري الورد.. أما أنا أُبرمجه لكِ ✨</div>
+    <div class="subtitle">اضغطي على الوردة أو الزر بالأسفل 💖</div>
+  </div>
+
+  <div class="scene-container" onclick="toggleCard()">
+    <svg viewBox="0 0 500 650">
+      <defs>
+        <!-- التدرجات اللونية الواقعية الفاخرة للوردة -->
+        <radialGradient id="deepRose" cx="40%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#ff4d79" />
+          <stop offset="35%" stop-color="#e60039" />
+          <stop offset="70%" stop-color="#800020" />
+          <stop offset="100%" stop-color="#33000d" />
+        </radialGradient>
+
+        <radialGradient id="innerPetal" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff809b" />
+          <stop offset="60%" stop-color="#cc0033" />
+          <stop offset="100%" stop-color="#4d0013" />
+        </radialGradient>
+
+        <linearGradient id="stem3D" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#1e4d2b" />
+          <stop offset="50%" stop-color="#47a062" />
+          <stop offset="100%" stop-color="#0d2615" />
+        </linearGradient>
+
+        <linearGradient id="leaf3D" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#52be7b" />
+          <stop offset="100%" stop-color="#0f381d" />
+        </linearGradient>
+
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      <!-- ساق الوردة وأوراقها -->
+      <g id="plant">
+        <path class="stem" d="M 250,180 Q 230,380 250,580" fill="none" stroke="url(#stem3D)" stroke-width="8" stroke-linecap="round" />
+        
+        <!-- أوراق الشجر التفاعلية -->
+        <path d="M 245,400 C 170,390 120,320 140,290 C 170,310 215,360 245,400 Z" fill="url(#leaf3D)" opacity="0.9" />
+        <path d="M 255,340 C 330,320 380,250 360,220 C 330,240 285,290 255,340 Z" fill="url(#leaf3D)" opacity="0.9" />
+        
+        <!-- كأس الوردة -->
+        <path d="M 225,185 Q 250,220 275,185 Q 250,195 225,185 Z" fill="#0f381d" />
+      </g>
+
+      <!-- زهرة الورد الجوري الملكي ثلاثية الأبعاد -->
+      <g class="rose-head" filter="url(#glow)">
+        <!-- طبقات البتلات الخارجية العريضة -->
+        <path d="M 150,160 C 130,80 210,40 250,75 C 290,40 370,80 350,160 C 320,240 180,240 150,160 Z" fill="url(#deepRose)" />
+        <path d="M 170,180 C 140,110 210,70 250,95 C 290,70 360,110 330,180 C 300,250 200,250 170,180 Z" fill="url(#deepRose)" />
+
+        <!-- الطبقات الوسطى -->
+        <path d="M 185,160 C 165,105 220,85 250,105 C 280,85 335,105 315,160 C 295,215 205,215 185,160 Z" fill="url(#innerPetal)" />
+        <path d="M 200,150 C 185,110 225,95 250,112 C 275,95 315,110 300,150 C 285,190 215,190 200,150 Z" fill="url(#deepRose)" />
+
+        <!-- قلب برعم الوردة الملتف ببراعة -->
+        <path d="M 218,140 C 210,115 235,105 250,115 C 265,105 290,115 282,140 C 275,165 225,165 218,140 Z" fill="url(#innerPetal)" />
+        <ellipse cx="250" cy="132" rx="16" ry="11" fill="#4d0013" />
+        <ellipse cx="250" cy="130" rx="10" ry="7" fill="#ff4d79" opacity="0.9" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- الكارت الزجاجي الذي يظهر عند الضغط -->
+  <div class="glass-card" id="loveCard">
+    <div class="card-name">أميرتي أَبْرَارْ 👑</div>
+    <div class="card-text">
+      الورد الجوري خجلان من جمالك.. <br>
+      صممت لكِ هاد الورد بيدي خطوة بخطوة ليبقى متفتح ومشرق للأبد مثلك تماماً 💖
+    </div>
+  </div>
+
+  <button class="action-btn" onclick="toggleCard()">افتحي هدية عمران 🎁</button>
+
+  <script>
+    // إظهار وإخفاء الكارت الزجاجي الفاخر
+    function toggleCard() {
+      const card = document.getElementById('loveCard');
+      card.classList.toggle('active');
+    }
+
+    // توليد وتساقط بتلات الورد بالخلفية تلقائياً
+    const body = document.body;
+    for (let i = 0; i < 30; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal-fall';
+      
+      const size = Math.random() * 12 + 8;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size * 1.4}px`;
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.animationDuration = `${Math.random() * 5 + 4}s`;
+      petal.style.animationDelay = `${Math.random() * 5}s`;
+      
+      body.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
